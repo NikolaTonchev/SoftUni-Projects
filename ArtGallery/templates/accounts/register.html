@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+
+    <link rel="stylesheet" href="{% static "register_css.css" %}">
+
+
+    <div class="card text-bg-light mb-3 card col-6 offset-4"
+         style="max-width: 40rem; height: 45rem;margin-top: 30px">
+        <div class="card-header" style="text-align: center"><h3>Registration</h3></div>
+        <div class="card-body">
+            <form action="{% url 'register' %}" method="post">
+
+                {% csrf_token %}
+                <hr style="margin-bottom:35px; margin-top: 35px">
+                Username : {{ form.username }}
+                {{ form.username.errors }}
+                <hr style="margin-bottom:35px; margin-top: 40px">
+                Email : {{ form.email }}
+                {{ form.email.errors }}
+                <hr style="margin-bottom:35px; margin-top: 35px">
+                Password : {{ form.password1 }}
+                {{ form.password2.errors }}
+                <hr style="margin-bottom:35px; margin-top: 35px">
+                Repeat Password : {{ form.password2 }}
+                {{ form.password1.errors }}
+
+                <button style="position: absolute; bottom: 50px; left: 260px"
+                        class="btn btn-primary btn-lg">Sign
+                    Up
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+   
+
+
+
+{% endblock %}
+

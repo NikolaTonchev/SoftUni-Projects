@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+
+
+    <link rel="stylesheet" href="{% static 'login_css.css' %}">
+
+    <div class="card text-bg-light mb-3 card col-6 offset-4"
+         style="max-width: 35rem; height: 30rem;margin-top: 100px">
+        <div class="card-header" style="text-align: center"><h3>Login</h3></div>
+        <div class="card-body">
+            <form action="{% url 'login' %}" method="post">
+
+                {% csrf_token %}
+                <div style="position: absolute;left: 100px; top: 130px">
+                    {{ form.as_p }}
+                </div>
+
+
+                <button style="position: absolute; bottom: 120px;left: 230px"
+                        class="btn btn-primary btn-lg">Log
+                    In
+                </button>
+                <hr style="margin-top: 310px">
+                <p style="position: absolute; bottom: 20px;left: 100px">If you don't have an account click here: <a
+                        href="{% url 'register' %}">Register</a></p>
+
+            </form>
+
+        </div>
+    </div>
+    
+
+
+{% endblock %}
+

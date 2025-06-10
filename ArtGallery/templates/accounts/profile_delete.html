@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+    <link rel="stylesheet" href="{% static 'profile_edit_delete_css.css' %}">
+    <div class="card text-center mb-3" style="width: 25rem;margin-left: 750px; margin-top: 180px">
+        <div class="card-body">
+            <hr>
+            <h5 class="card-title">Are you sure you want to delete your account?</h5>
+            <hr>
+            <form action="{% url 'profile_delete' slug=request.user.username pk=request.user.pk %}" method="post">
+                {% csrf_token %}
+
+                <button class="btn btn-info">DELETE</button>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

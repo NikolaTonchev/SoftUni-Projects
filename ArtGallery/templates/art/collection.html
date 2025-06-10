@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block search_bar %}
+
+    <form style="margin-left: auto" class="d-flex" method="get">
+        {% csrf_token %}
+        {{ search_form.art_piece_title }}
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+{% endblock %}
+
+{% block main %}
+    <link rel="stylesheet" href="{% static "collection_browse_css.css" %}">
+
+    {% if art_pieces %}
+        {% for art in art_pieces %}
+
+            {% include "collection_and_browse.html" %}
+
+        {% endfor %}
+
+    {% else %}
+        <div class="card text-bg-light mb-3" style="max-width: 25rem; left: 750px; top: 250px">
+            <div class="card-header" style="text-align: center"><h4>Nothing found</h4></div>
+            <div class="card-body">
+                <h5 style="text-align: center" class="card-title">Try adding an ArtPiece. </h5>
+                <button style="margin-left: 125px"><a style="text-decoration: none; color: black"
+                                                      href="{% url 'add_art_piece' %}">Add ArtPiece</a></button>
+
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
